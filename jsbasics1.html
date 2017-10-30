@@ -54,9 +54,11 @@
   <body>
     <script>
       function yell(string){
-        string.toUpperCase();
+        string = string.toUpperCase();
+        console.log(string);
         return string;
       }
+      console.log(yell("hello world"));
     </script>
   </body>
 </html>
