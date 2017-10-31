@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <script>
+
+      function starString(int){
+        let newString = "";
+        for (let i = 0; i < int; i++){
+          newString += '*';
+        }
+        return newString;
+      }
+      let stars = starString(8);
+      console.log(stars);
+
+
+
+      function drawStars(arr){
+        let result = [];
+        for(let i = 0; i < arr.length; i++){
+          if(typeof arr[i] === 'number'){
+            result.push(starString(arr[i]));
+          }
+          else if(typeof arr[i] === 'string'){
+            let string = "";
+            for(let j = 0; j < arr[i].length; j++){
+              string += arr[i][0].toLowerCase();
+            }
+            result.push(string);
+          }
+        }
+        return result;
+      }
+      let test1 = [4,3,5,2,1, "Peter", "Nick"];
+      console.log(drawStars(test1));
+
+
+
+    </script>
+  </body>
+</html>
