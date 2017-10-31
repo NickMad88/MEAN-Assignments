@@ -7,21 +7,40 @@
         if(x == 0 && y == 0){
           var product = "All products 0";
           return product;
-        }else{
-          var product = x * y;
-          return product;
         }
+
+        if(x.constructor === Array){
+          for(let i = 0; i < x.length; i++){
+            x[i] = x[i] * y;
+          }
+          return x;
+        }
+        if(y.constructor === String){
+          return "Error: Can Not Multiple by string"
+        }
+        if(x.constructor === String){
+          let newString = "";
+          for(let i=0; i<y; i++){
+            newString += x;
+          }
+          return newString;
+        }
+
+        return x * y;
 
       }
 
-      let test1 = magic_multiply(5,2);
+      const test1 = magic_multiply(5,2);
+      const test2 = magic_multiply(0,0);
+      const test3 = magic_multiply([1,2,3], 2);
+      const test4 = magic_multiply(7, "three");
+      const test5 = magic_multiply("Nicholas", 4);
+
       console.log(test1);
-
-      let test2 = magic_multiply(0,0);
       console.log(test2);
-
-      let test3 = magic_multiply([1,2,3], 2);
       console.log(test3);
+      console.log(test4);
+      console.log(test5);
 
     </script>
   </body>
