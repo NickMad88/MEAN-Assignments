@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+  <script>
+  $(document).ready(
+    function(){
+      $('button').click(function(){
+        // as soon as the AJAX request returns, displayName is invoked and passed data!
+        //https://api.jquery.com/jquery.get/
+        $.get('https://api.github.com/users/nickmad88', displayName);
+      });
+    function displayName(data){
+        if (data.name){
+          $('body').append("<p>"+data.name+"</p>");
+        }
+      }
+    }
+  );
+  </script>
+</head>
+<body>
+<button>Click Me</button>
+</body>
+</html>
