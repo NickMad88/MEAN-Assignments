@@ -1,0 +1,134 @@
+<h1>{{title}}</h1>
+
+<h2 *ngIf= "message.length > 1"> Thank you for registering with us <span style= 'color: blue;'>{{message[0]}}</span>! A confirmation email has been sent to {{message[1]}}, and we will send all mail to {{message[2]}} Have a wonderful day :)</h2>
+
+<fieldset>
+  <legend>Account Information</legend>
+
+    <div class= "content">
+        <form (submit)= "onSubmit()" #formData= 'ngForm'>
+          <label>*First Name:</label>
+          <input type="text" name="f_name"
+          required
+          minlength="4"
+          maxlength="20" 
+          [(ngModel)] = "user.f_name"
+          #f_name = "ngModel"
+          >
+          <br>
+
+          <label>*Last Name:</label>
+          <input type="text" name="l_name"
+          required
+          minlength="4"
+          maxlength="20" 
+          [(ngModel)] = "user.l_name"
+          #l_name = "ngModel"
+          >
+          <br>
+
+          <label>*Email:</label>
+          <input type="email" name="email"
+          required
+          pattern= "([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"
+          [(ngModel)] = "user.email"
+          #email = "ngModel"
+          >
+          <br>
+
+          <label>*Password:</label>
+          <input type="password" name="password"
+          required
+          minlength="16"
+          [(ngModel)]= "user.password"
+          #password= "ngModel" 
+          >
+          <br>
+
+          <label>*Confirm Password:</label>
+          <input type="password" name="confirm_password"
+          required
+          minlength="16" 
+          [(ngModel)]= "user.confirm_password"
+          #confirm_password= "ngModel" 
+          >
+          <br>
+
+          <label>*Street Address:</label>
+          <input type="text" name="address"
+          required 
+          [(ngModel)]= "user.address"
+          #address= "ngModel" 
+          >
+          <br>
+
+          <label>Unit/Apt #</label>
+          <input type="text" name="unit"
+          [(ngModel)]= "user.unit"
+          #unit= "ngModel" 
+          >
+          <br>
+
+          <label>*City:</label>
+          <input type="text" name="city"
+          required
+          [(ngModel)]= "user.city"
+          #city= "ngModel" 
+          >
+          <br>
+
+          <label>*State:</label>
+          <input type="text" name="state"
+          required
+          minlength="2" 
+          [(ngModel)]= "user.state"
+          #state= "ngModel" 
+          >
+          <br>
+
+          <label>*I'm feeling lucky:</label>
+          Yes<input type="radio" name="lucky" value= "Yes"
+          required 
+          [(ngModel)]= "user.lucky"
+          #lucky= "ngModel" 
+          >
+          No<input type="radio" name="lucky" value= "No"
+          required 
+          [(ngModel)]= "user.lucky"
+          #lucky= "ngModel" 
+          >
+          <br>
+          
+          <input *ngIf= "formData.valid" type="submit" name="submit" value= "Submit">
+        </form>
+      </div>
+
+      <div id= "errors" class="content">
+        <!-- error div -->
+          <div *ngIf= "!f_name.valid">First name is required</div>
+
+          <div *ngIf= "!l_name.valid">Last name is required</div>
+
+          <div *ngIf= "!email.valid">Email must be valid</div>
+
+          <div *ngIf= "!password.valid">Password must be at least 16 characters long</div>
+
+          <div *ngIf= "!confirm_password.valid">Password Confirmation must match Password</div>
+
+          <div *ngIf= "!address.valid">Address is required</div>
+
+          <div *ngIf= "!city.valid">City is required</div>
+
+          <div *ngIf= "!state.valid">State is required</div>
+
+          <div *ngIf= "!lucky.valid">Choosing how you feel is required</div>
+
+      </div>
+    
+
+  </fieldset>
+
+  
+
+<!-- If you want to see use obj uncomment the line below: -->
+{{ message | json }}
